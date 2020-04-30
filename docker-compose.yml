@@ -1,0 +1,14 @@
+version: '2'
+services:
+  zabbix-agent:
+    image: digiapulssi/docker-zabbix-agent
+    volumes:
+      - /proc:/host/proc:ro 
+      - /sys:/host/sys:ro 
+      - /dev:/host/dev:ro 
+      - /etc:/host/etc:ro 
+      - /var/run/docker.sock:/host/var/run/docker.sock
+    environment:
+      - ZABBIX_SERVER=${HOST}
+      - METADATA=yandex-stun 
+      - HOST=yandex-stun 
